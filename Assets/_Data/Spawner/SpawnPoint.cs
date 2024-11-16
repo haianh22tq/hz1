@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class SpawnPoint : HaiMonoBehaviour
+public class SpawnPoint : HaiMonoBehaviour
 {
     [SerializeField] protected List<Transform> points;
 

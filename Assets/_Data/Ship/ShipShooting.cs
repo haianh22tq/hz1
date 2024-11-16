@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipShooting : MonoBehaviour
+public abstract class ShipShooting : HaiMonoBehaviour
 {
     [SerializeField] protected bool isShooting = false;
     [SerializeField] protected float shootDelay = 1f;
@@ -34,12 +34,11 @@ public class ShipShooting : MonoBehaviour
         Transform newBullet = BulletSpawner.Instance.Spawn(BulletSpawner.bulletOne, spawnPos, rotation);
         if (newBullet == null) return;
         newBullet.gameObject.SetActive(true);
+        BulletCtrl bulletCtrl = newBullet.GetComponent<BulletCtrl>();
+        bulletCtrl.SetShooter(transform.parent);
         //   ebug.Log("SHoot");
 
     }
-    protected virtual bool IsShooting()
-    {
-        this.isShooting = InputManager.Instance.OnFiring == 1;
-        return this.isShooting;
-    }
+    protected abstract bool IsShooting();
+    
 }

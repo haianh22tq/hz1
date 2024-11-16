@@ -5,25 +5,25 @@ using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(Rigidbody))]
-public class ItemLooter : HaiMonoBehaviour
+public class ItemLooter : InventoryAbstract
 {
-    [SerializeField] protected Inventory inventory;
+    //[SerializeField] protected Inventory inventory;
     [SerializeField] protected SphereCollider _collider;
     [SerializeField] protected Rigidbody _rigidbody;
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadInventory();
+       // this.LoadInventory();
         this.LoadTrigger();
         this.LoadRigidbody();
     }
 
-    protected virtual void LoadInventory()
+   /* protected virtual void LoadInventory()
     {
         if (this.inventory != null) return;
         this.inventory = transform.parent.GetComponent<Inventory>();
         Debug.Log(transform.name + ": LoadInventory", gameObject);
-    }
+    }*/
     protected virtual void LoadTrigger()
     {
         if (this._collider != null) return;
@@ -44,9 +44,11 @@ public class ItemLooter : HaiMonoBehaviour
     { 
         ItemPickupable itemPickupable = collider.GetComponent<ItemPickupable>();
         if (itemPickupable == null) return;
-
+        
         ItemCode itemCode = itemPickupable.GetItemCode();
-        if(this.inventory.AddItem(itemCode, 1))
+        ItemInventory itemInventory = itemPickupable.ItemCtrl.ItemInventory;
+
+        if (this.inventory.AddItem(itemInventory))
         {
             itemPickupable.Picked();
         }

@@ -9,15 +9,16 @@ public class JunkCtrl : HaiMonoBehaviour
 
     [SerializeField] private Transform model;
     public Transform Model { get => model; }
-    [SerializeField] private JunkSO junkSO;
-    public JunkSO JunkSO { get => junkSO;}
+    [SerializeField] private ShootableObjectSO shootableObjectSO;
+    public ShootableObjectSO ShootableObjectSO { get => shootableObjectSO;}
 
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadModel();
         this.LoadJunkDespawn();
-        this.LoadJunkSO();
+        // this.LoadJunkSO();
+        this.LoadShootableObjectSO();
     }
 
     protected virtual void LoadModel()
@@ -32,13 +33,22 @@ public class JunkCtrl : HaiMonoBehaviour
         this.junkDespawn = GetComponentInChildren<JunkDespawn>();
         Debug.Log(transform.name + ": LoadJunkDespawn", gameObject);
     }
-    protected virtual void LoadJunkSO()
+    /* protected virtual void LoadJunkSO()
+     {
+         if (this.shootableObjectSO != null) return;
+         //tạo đường dẫn tới JunkSO
+         string resPath = "Junk/" + transform.name;
+         // Récoures>load dùng để tạo liên kết
+         this.shootableObjectSO = Resources.Load<JunkSO>(resPath);
+         Debug.LogWarning(transform.name + ": LoadJunkSO" + resPath, gameObject);
+     }*/
+    protected virtual void LoadShootableObjectSO()
     {
-        if (this.junkSO != null) return;
+        if (this.shootableObjectSO != null) return;
         //tạo đường dẫn tới JunkSO
-        string resPath = "Junk/" + transform.name;
+        string resPath = "ShootableObject/Junk/" + transform.name;
         // Récoures>load dùng để tạo liên kết
-        this.junkSO = Resources.Load<JunkSO>(resPath);
-        Debug.LogWarning(transform.name + ": LoadJunkSO" + resPath, gameObject);
+        this.shootableObjectSO = Resources.Load<ShootableObjectSO>(resPath);
+        Debug.LogWarning(transform.name + ": LoadShootableObjectSO" + resPath, gameObject);
     }
 }

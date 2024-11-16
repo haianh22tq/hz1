@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class HaiMonoBehaviour : MonoBehaviour
 {
+    protected virtual void Awake()
+    {
+        this.LoadComponents();
+    }
     protected virtual void Start()
     {
         //for overide
@@ -19,11 +23,6 @@ public class HaiMonoBehaviour : MonoBehaviour
         //
     }
 
-    protected virtual void Awake()
-    {
-        this.LoadComponents();
-    }
-
     protected virtual void LoadComponents()
     {
        //
@@ -32,6 +31,10 @@ public class HaiMonoBehaviour : MonoBehaviour
     {
         //
     }
-    
+    protected virtual void OnDisable()
+    {
+        //
+    }
+
 
 }

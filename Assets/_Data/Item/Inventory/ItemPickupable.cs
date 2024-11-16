@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
-public class ItemPickupable : JunkAbstract
+public class ItemPickupable : ItemAbstract
 {
     [SerializeField] protected SphereCollider _collider;
 
@@ -11,6 +11,12 @@ public class ItemPickupable : JunkAbstract
     {
         //ham chuyen kieu string cua String2ItemCode thanh kieu enum
         return (ItemCode)System.Enum.Parse(typeof(ItemCode), itemName);
+    }
+
+    public virtual void OnMouseDown()
+    {
+        //Debug.Log(transform.parent.name);
+        PlayerCtrl.Instance.PlayerPickUp.ItemPickup(this);
     }
     protected override void LoadComponents()
     {
@@ -32,6 +38,9 @@ public class ItemPickupable : JunkAbstract
     }
     public virtual void Picked()
     {
-        this.junkCtrl.JunkDespawn.DespawnObject();
+        //this.junkCtrl.JunkDespawn.DespawnObject();
+        this.ItemCtrl.ItemDespawn.DespawnObject();
     }
+
+   
 }   

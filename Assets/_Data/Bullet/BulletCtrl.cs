@@ -8,8 +8,10 @@ public class BulletCtrl : HaiMonoBehaviour
     public DameSender DameSender { get => dameSender; }
 
     [SerializeField] private BulletDespawn bulletDespawn;
+    public BulletDespawn BulletDespawn { get => bulletDespawn; }
 
-    public BulletDespawn BulletDespawn { get => bulletDespawn;}
+    [SerializeField] private Transform shooter;
+    public Transform Shooter => shooter;
 
     protected override void LoadComponents()
     {
@@ -32,5 +34,10 @@ public class BulletCtrl : HaiMonoBehaviour
         this.bulletDespawn = GetComponentInChildren<BulletDespawn>();
         Debug.Log(transform.name + ": LoadBulletDespawn", gameObject);
 
+    }
+
+    public virtual void SetShooter(Transform shooter)
+    {
+        this.shooter = shooter;
     }
 }

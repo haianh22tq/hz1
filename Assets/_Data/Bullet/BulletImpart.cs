@@ -36,6 +36,7 @@ public class BulletImpart : BulletAbtract
 
     protected void OnTriggerEnter(Collider other)
     {
+        if (other.transform.parent == this.bulletCtrl.Shooter) return;
         this.bulletCtrl.DameSender.Send(other.transform);
     }
 

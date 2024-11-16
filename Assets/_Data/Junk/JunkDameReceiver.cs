@@ -32,7 +32,7 @@ public class JunkDameReceiver : DameReceiver
     {
         Vector3 dropPos = transform.position;
         Quaternion dropRot = transform.rotation;
-        ItemDropSpawner.Instance.Drop(this.junkCtrl.JunkSO.droplist, dropPos, dropRot);//danh sach item can roi, vi tri roi, goc quay roi
+        ItemDropSpawner.Instance.Drop(this.junkCtrl.ShootableObjectSO.droplist, dropPos, dropRot);//danh sach item can roi, vi tri roi, goc quay roi
     }
     protected virtual void OnDeadFX() //caif them hieu ung su kien die
     {
@@ -48,7 +48,7 @@ public class JunkDameReceiver : DameReceiver
 
     public override void Reborn()
     {
-        this.hpMax = this.junkCtrl.JunkSO.hpMax;
+        this.hpMax = this.junkCtrl.ShootableObjectSO.hpMax;
         base.Reborn();
     }
 }
