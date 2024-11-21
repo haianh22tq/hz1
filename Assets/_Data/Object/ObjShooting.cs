@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ShipShooting : HaiMonoBehaviour
+public abstract class ObjShooting : HaiMonoBehaviour
 {
     [SerializeField] protected bool isShooting = false;
     [SerializeField] protected float shootDelay = 1f;

@@ -13,12 +13,24 @@ public abstract class ShootableObjectCtrl : HaiMonoBehaviour
     [SerializeField] private ShootableObjectSO shootableObjectSO;
     public ShootableObjectSO ShootableObjectSO => shootableObjectSO;
 
+
+    [SerializeField] protected ObjShooting objShooting;
+    public ObjShooting ObjShooting => objShooting;
+
+    [SerializeField] protected ObjMovement objMovement;
+    public ObjMovement ObjMovement => objMovement;
+
+    [SerializeField] protected ObjLookAtTarget objLookAtTarget;
+    public ObjLookAtTarget ObjLookAtTarget => objLookAtTarget;
     protected override void LoadComponents()
     {
         base.LoadComponents();
         this.LoadModel();
         this.LoadDespawn();
         this.LoadShootableObjectSO();
+        this.LoadObjShooting();
+        this.LoadObjMovement();
+        this.LoadObjLookAtTarget();
     }
     protected virtual void LoadModel()
     {
@@ -40,6 +52,25 @@ public abstract class ShootableObjectCtrl : HaiMonoBehaviour
         // Récoures>load dùng để tạo liên kết
         this.shootableObjectSO = Resources.Load<ShootableObjectSO>(resPath);
         Debug.LogWarning(transform.name + ": LoadShootableObjectSO" + resPath, gameObject);
+    }
+
+    protected virtual void LoadObjShooting()
+    {
+        if (this.objShooting != null) return;
+        this.objShooting = GetComponentInChildren<ObjShooting>();
+        Debug.Log(transform.name + ": LoadObjAppearWithoutShoot", gameObject);
+    }
+    protected virtual void LoadObjMovement()
+    {
+        if (this.objMovement != null) return;
+        this.objMovement = GetComponentInChildren<ObjMovement>();
+        Debug.Log(transform.name + ": LoadObjMovement", gameObject);
+    }
+    protected virtual void LoadObjLookAtTarget()
+    {
+        if (this.objLookAtTarget != null) return;
+        this.objLookAtTarget = GetComponentInChildren<ObjLookAtTarget>();
+        Debug.Log(transform.name + ": LoadObjLookAtTarget", gameObject);
     }
 
     protected abstract string GetObjectTypeString();

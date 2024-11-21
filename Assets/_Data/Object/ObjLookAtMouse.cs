@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipFollowMouse : ObjMovement
+public class ObjLookAtMouse : ObjLookAtTarget
 {
     protected override void FixedUpdate()
     {
