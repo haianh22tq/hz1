@@ -15,7 +15,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] private float onFiring = 0;
     public float OnFiring { get => onFiring;}
 
-    private void Awake()
+    public virtual void Awake()
     {
         if (InputManager.instance != null) Debug.Log("Eror Only 1 Inputmanager  allow to exits");
         InputManager.instance = this;

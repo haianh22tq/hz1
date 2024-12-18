@@ -13,7 +13,6 @@ public abstract class ShootableObjectCtrl : HaiMonoBehaviour
     [SerializeField] private ShootableObjectSO shootableObjectSO;
     public ShootableObjectSO ShootableObjectSO => shootableObjectSO;
 
-
     [SerializeField] protected ObjShooting objShooting;
     public ObjShooting ObjShooting => objShooting;
 
@@ -22,6 +21,9 @@ public abstract class ShootableObjectCtrl : HaiMonoBehaviour
 
     [SerializeField] protected ObjLookAtTarget objLookAtTarget;
     public ObjLookAtTarget ObjLookAtTarget => objLookAtTarget;
+
+    [SerializeField] protected Spawner spawner;
+    public Spawner Spawner => spawner;
     protected override void LoadComponents()
     {
         base.LoadComponents();
@@ -31,6 +33,7 @@ public abstract class ShootableObjectCtrl : HaiMonoBehaviour
         this.LoadObjShooting();
         this.LoadObjMovement();
         this.LoadObjLookAtTarget();
+        this.LoadSpawner();
     }
     protected virtual void LoadModel()
     {
@@ -71,6 +74,12 @@ public abstract class ShootableObjectCtrl : HaiMonoBehaviour
         if (this.objLookAtTarget != null) return;
         this.objLookAtTarget = GetComponentInChildren<ObjLookAtTarget>();
         Debug.Log(transform.name + ": LoadObjLookAtTarget", gameObject);
+    }
+    protected virtual void LoadSpawner()
+    {
+        if (this.spawner != null) return;
+        this.spawner = transform.parent?.parent?.GetComponent<Spawner>();
+        Debug.Log(transform.name + ": LoadSpawner", gameObject);
     }
 
     protected abstract string GetObjectTypeString();

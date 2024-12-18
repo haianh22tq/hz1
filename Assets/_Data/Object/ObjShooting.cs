@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class ObjShooting : HaiMonoBehaviour
 {
     [SerializeField] protected bool isShooting = false;
-    [SerializeField] protected float shootDelay = 1f;
+    [SerializeField] protected float shootDelay = 0.1f;
     [SerializeField] protected float shootTimer = 0f;
     //[SerializeField] protected Transform bulletPrefabs;
 

@@ -18,6 +18,12 @@ public abstract class ObjAppearing : HaiMonoBehaviour
         base.Start();
         this.OnAppearStart();
     }
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        this.OnAppearStart();
+    }
     protected virtual void FixedUpdate()
     {
         this.Appearing();

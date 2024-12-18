@@ -27,7 +27,7 @@ public class ObjLookAtPlayer : ObjLookAtTarget
     {
         if (this.player == null) return;
         //lay vi tri con tro chuot
-        this.targetPosition = player.transform.position;
+        this.targetPosition = this.player.transform.position;
         this.targetPosition.z = 0;
     }
 }

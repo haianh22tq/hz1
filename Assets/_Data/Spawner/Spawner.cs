@@ -114,4 +114,9 @@ public abstract class Spawner : HaiMonoBehaviour
         //chon trong danh sach prefabs để trả ra
         return this.prefabs[rand];
     }
+
+    public virtual void Hold(Transform obj)
+    {
+        obj.parent = this.holder;
+    }
 }

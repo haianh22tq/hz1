@@ -32,7 +32,7 @@ public class SpawnerCtrl : HaiMonoBehaviour
     {
         if (this.spawnPoint != null) return;
         //Transform.Find ( quet qua tat ca cac object trong game luon )
-        this.spawnPoint = Transform.FindObjectOfType<SpawnPoint>();
+        this.spawnPoint = GameObject.Find("SceneSpawnPoint").GetComponent<SpawnPoint>();
         Debug.Log(transform.name + ": LoadSpawnPoint", gameObject);
     }
     

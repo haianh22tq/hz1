@@ -18,7 +18,7 @@ public class ObjMoveFoward : ObjMovement
     protected virtual void GetMousePosition()
     {
         //lay vi tri con tro chuot
-        this.targetPosition = moveTarget.position;
+        this.targetPosition = this.moveTarget.position;
         this.targetPosition.z = 0;
     }
 

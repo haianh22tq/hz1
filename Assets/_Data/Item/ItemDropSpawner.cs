@@ -22,7 +22,7 @@ public class ItemDropSpawner : Spawner
         if (itemDrop == null) return;
         itemDrop.gameObject.SetActive(true);
     }
-    public virtual Transform Drop(ItemInventory itemInventory, Vector3 pot, Quaternion rot)
+    public virtual Transform DropFromInventory(ItemInventory itemInventory, Vector3 pot, Quaternion rot)
     {
         ItemCode itemCode = itemInventory.itemProfile.itemCode;
         Transform itemDrop = this.Spawn(itemCode.ToString(), pot, rot);
